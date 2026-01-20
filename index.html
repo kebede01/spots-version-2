@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta name="author" content="Kebede Tekle" />
     <meta name="description " content="Profile photos" />
     <meta
@@ -15,10 +18,27 @@
   </head>
   <body>
     <div class="page">
-      <header class="header">HEADER</header>
+      <header class="header">
+
+          <img
+            class="header__image"
+            src="./images/spots-dark.svg"
+            alt="spots icon"
+          />
+          <h1 class="header__text">spots</h1>
+
+      </header>
       <main class="content">
-        <section class="profile"></section>
-         <section class="cards"></section>
+        <section class="profile">
+          <img class="profile__image" src="./images/avatar.jpg">
+          <div class="profile__content">
+            <h2 class="profile__header"></h2>
+            <p class="profile__description"></p>
+            <button class="profile__edit-button"></button>
+          </div>
+          <button class="profile__post-button"></button>
+        </section>
+        <section class="cards"></section>
       </main>
       <footer class="footer"></footer>
     </div>
