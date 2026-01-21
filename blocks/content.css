@@ -1,11 +1,10 @@
-.content{
+.content {
   padding: 34px 80px 60px;
   background-color: rgba(252, 245, 229, 1);
-
 }
 
 @media screen and (max-width: 630px) {
-.content{
-   padding: 20px 16px;
-}
+  .content {
+    padding: 20px 16px;
+  }
 }
