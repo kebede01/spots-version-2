@@ -27,18 +27,28 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="avatar image" />
+          <img
+            class="profile__avatar"
+            src="./images/avatar.jpg"
+            alt="avatar image"
+          />
           <div class="profile__column">
             <h2 class="profile__title">Kebede Tekle</h2>
             <p class="profile__description">Software Engineer</p>
             <button class="profile__edit-btn" type="button">
-              <img class="profile__pen-icon" src="./images/pen-icon.svg" alt="pen icon"/>Edit
-              Profile
+              <img
+                class="profile__pen-icon"
+                src="./images/pen-icon.svg"
+                alt="pen icon"
+              />Edit Profile
             </button>
           </div>
           <button class="profile__post-btn" type="button">
-            <img class="profile__add-icon" src="./images/add-icon.svg" alt="add sign icon"/>New
-            Post
+            <img
+              class="profile__add-icon"
+              src="./images/add-icon.svg"
+              alt="add sign icon"
+            />New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -113,10 +123,70 @@
             </li>
           </ul>
         </section>
-      </main>
+ </main>
       <footer class="footer">
         <p class="footer__text">2026 &copy; Spots</p>
       </footer>
+    <div class="modal modal_is-opened">
+          <div class="modal__container">
+            <h2 class="modal__title">Edit profile</h2>
+            <button class="modal__close-btn" type="button">
+              <img src="./images/close-icon.svg" />
+            </button>
+            <form  id="edit-modal" class="modal__form">
+              <label for="name" class="modal__label">
+                Name<input
+                id="name"
+                  type="text"
+                  class="modal__input"
+                  placeholder="Bessie Coleman"
+                />
+              </label>
+
+              <label for="description" class="modal__label">
+                Description<input
+                id="description"
+                  type="text"
+                  class="modal__input"
+                  placeholder="Civil Aviatar"
+                />
+              </label>
+
+              <button class="modal__submit-btn" type="submit">Save</button>
+            </form>
+          </div>
+ </div>
+   <div class="modal ">
+          <div class="modal__container">
+            <h2 class="modal__title">New post</h2>
+            <button class="modal__close-btn" type="button">
+              <img src="./images/close-icon.svg" />
+            </button>
+            <form id="post-modal" class="modal__form">
+              <label for="image-link" class="modal__label">
+                Image link<input
+                id="image-link"
+                  type="url"
+                  class="modal__input"
+                  placeholder="Paste a link to the picture"
+                />
+              </label>
+
+              <label for="caption" class="modal__label">
+                Caption<input
+                id="caption"
+                  type="text"
+                  class="modal__input"
+                  placeholder="Type your caption"
+                />
+              </label>
+
+              <button class="modal__submit-btn" type="submit">Save</button>
+            </form>
+            </div>
     </div>
+    <script src="./script.js">
+
+    </script>
   </body>
 </html>
