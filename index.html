@@ -127,13 +127,13 @@
       <footer class="footer">
         <p class="footer__text">2026 &copy; Spots</p>
       </footer>
-    <div class="modal modal_is-opened">
+    <div class="modal modal_is-opened " id="edit-modal">
           <div class="modal__container">
             <h2 class="modal__title">Edit profile</h2>
             <button class="modal__close-btn" type="button">
-              <img src="./images/close-icon.svg" />
+              <!-- <img src="./images/close-icon.svg" /> -->
             </button>
-            <form  id="edit-modal" class="modal__form">
+            <form   class="modal__form">
               <label for="name" class="modal__label">
                 Name<input
                 id="name"
@@ -156,13 +156,13 @@
             </form>
           </div>
  </div>
-   <div class="modal ">
+   <div class="modal modal_is-opened" id="post-modal">
           <div class="modal__container">
             <h2 class="modal__title">New post</h2>
             <button class="modal__close-btn" type="button">
-              <img src="./images/close-icon.svg" />
+              <!-- <img src="./images/close-icon.svg" /> -->
             </button>
-            <form id="post-modal" class="modal__form">
+            <form  class="modal__form">
               <label for="image-link" class="modal__label">
                 Image link<input
                 id="image-link"
@@ -185,7 +185,7 @@
             </form>
             </div>
     </div>
-    <script src="./script.js">
+    <script src="script.js" defer>
 
     </script>
   </body>
