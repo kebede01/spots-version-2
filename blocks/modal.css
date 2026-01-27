@@ -9,11 +9,15 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  visibility: hidden;
+   opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
 }
 
 .modal_is-opened{
-  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal__container {
@@ -21,10 +25,21 @@
   padding: 32px 50px;
   width: 57.3vw;
   max-width: 730px;
-  display: flex;
+  border-radius: 8px;
+ display: flex;
   flex-direction: column;
   background-color: white;
   gap: 32px;
+}
+
+ .modal__container{
+transform: translateY(-20px);
+  transition: transform 0.3s ease;
+ }
+
+/* when modal opens */
+.modal_is-opened .modal__container {
+  transform: translateY(0);
 }
 
 .modal__title {
