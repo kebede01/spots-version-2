@@ -123,70 +123,61 @@
             </li>
           </ul>
         </section>
- </main>
+      </main>
       <footer class="footer">
         <p class="footer__text">2026 &copy; Spots</p>
       </footer>
-    <div class="modal modal_is-opened " id="edit-modal">
-          <div class="modal__container">
-            <h2 class="modal__title">Edit profile</h2>
-            <button class="modal__close-btn" type="button">
-              <!-- <img src="./images/close-icon.svg" /> -->
-            </button>
-            <form   class="modal__form">
-              <label for="name" class="modal__label">
-                Name<input
-                id="name"
-                  type="text"
-                  class="modal__input"
-                  placeholder="Bessie Coleman"
-                />
-              </label>
-
-              <label for="description" class="modal__label">
-                Description<input
-                id="description"
-                  type="text"
-                  class="modal__input"
-                  placeholder="Civil Aviatar"
-                />
-              </label>
-
-              <button class="modal__submit-btn" type="submit">Save</button>
-            </form>
-          </div>
- </div>
-   <div class="modal modal_is-opened" id="post-modal">
-          <div class="modal__container">
-            <h2 class="modal__title">New post</h2>
-            <button class="modal__close-btn" type="button">
-              <!-- <img src="./images/close-icon.svg" /> -->
-            </button>
-            <form  class="modal__form">
-              <label for="image-link" class="modal__label">
-                Image link<input
-                id="image-link"
-                  type="url"
-                  class="modal__input"
-                  placeholder="Paste a link to the picture"
-                />
-              </label>
-
-              <label for="caption" class="modal__label">
-                Caption<input
-                id="caption"
-                  type="text"
-                  class="modal__input"
-                  placeholder="Type your caption"
-                />
-              </label>
-
-              <button class="modal__submit-btn" type="submit">Save</button>
-            </form>
-            </div>
     </div>
-    <script src="script.js" defer>
-
-    </script>
+    <div class="modal" id="edit-modal">
+      <div class="modal__container">
+        <h2 class="modal__title">Edit profile</h2>
+        <button class="modal__close-btn" type="button"></button>
+        <form class="modal__form">
+          <label for="name" class="modal__label">
+            Name<input
+              id="name"
+              type="text"
+              class="modal__input"
+              placeholder="Bessie Coleman"
+            />
+          </label>
+          <label for="description" class="modal__label">
+            Description<input
+              id="description"
+              type="text"
+              class="modal__input"
+              placeholder="Civil Aviatar"
+            />
+          </label>
+          <button class="modal__submit-btn" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="post-modal">
+      <div class="modal__container">
+        <h2 class="modal__title">New post</h2>
+        <button class="modal__close-btn" type="button"></button>
+        <form class="modal__form">
+          <label for="image-link" class="modal__label">
+            Image link<input
+              id="image-link"
+              type="url"
+              class="modal__input"
+              placeholder="Paste a link to the picture"
+            />
+          </label>
+          <label for="caption" class="modal__label">
+            Caption<input
+              id="caption"
+              type="text"
+              class="modal__input"
+              placeholder="Type your caption"
+            />
+          </label>
+          <button class="modal__submit-btn" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js" defer></script>
   </body>
 </html>
