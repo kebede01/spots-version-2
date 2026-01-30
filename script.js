@@ -49,38 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handlePostModalForm(e) {
     e.preventDefault();
-  // 1. Create the elements
-const cardElement = document.createElement('li');
-cardElement.classList.add('card');
-
-const imageElement = document.createElement('img');
-imageElement.classList.add('card__image');
-
-const captionContainer = document.createElement('div');
-captionContainer.classList.add('card__caption');
-
-const titleElement = document.createElement('h2');
-titleElement.classList.add('card__title');
-
-const likeButton = document.createElement('button');
-likeButton.type = 'button';
-likeButton.classList.add('card__like-btn');
-
-// 2. Assign the data (The "Safe" Way)
-imageElement.src = modalLinkInput.value;
-imageElement.alt = modalCaptionInput.value; // No need for "photo-by" prefix
-titleElement.textContent = modalCaptionInput.value;
-
-// 3. Assemble the hierarchy
-captionContainer.append(titleElement, likeButton);
-cardElement.append(imageElement, captionContainer);
-
-// 4. Add it to your list (assuming you have a 'cardContainer' variable)
-    cardContainer.prepend(cardElement) ;
-    console.log(modalLinkInput.value);
-    console.log(modalCaptionInput.value);
-    closeModal(postModal);
-  }
+}
 
   editCloseButton.addEventListener("click", () => closeModal(editModal));
   postCloseButton.addEventListener("click", () => closeModal(postModal));
@@ -90,4 +59,6 @@ cardElement.append(imageElement, captionContainer);
 
   editModalForm.addEventListener("submit", handleEditModalForm);
   postModalForm.addEventListener("submit", handlePostModalForm);
+
+
 });
