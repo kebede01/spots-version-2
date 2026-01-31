@@ -1,29 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const initialCards = [{
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg"
-  },
+  const initialCards = [
     {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg"
+      name: "Val Thorens",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
     },
     {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg"
+      name: "Restaurant terrace",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
     },
     {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg"
+      name: "An outdoor cafe",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
     },
     {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg"
+      name: "A very long bridge, over the forest and through the trees",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
     },
     {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg"
-    }
-  ]
+      name: "Tunnel with morning light",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+    },
+    {
+      name: "Mountain house",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+    },
+  ];
   //Profile elements
   const profileSection = document.querySelector(".profile");
   const editButton = profileSection.querySelector(".profile__edit-btn");
@@ -50,6 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitEditButton = editModalForm.querySelector(".modal__submit-btn");
   const submitPostButton = postModalForm.querySelector(".modal__submit-btn");
 
+  //Template element
+  const cardTemplate = document
+    .querySelector("#card-template")
+    .content.querySelector(".card");
+
   //Helper functions
   function closeModal(modal) {
     modal.classList.remove("modal_is-opened");
@@ -72,12 +78,30 @@ document.addEventListener("DOMContentLoaded", () => {
     closeModal(editModal);
   }
 
+  function createCard(data) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardImage = cardElement.querySelector(".card__image");
+    cardImage.src = data.link;
+    cardElement.alt = data.name;
+    const cardTitle = cardElement.querySelector(".card__title");
+    cardTitle.textContent = data.name;
+    return cardElement;
+  }
+
+  function renderCard(data) {
+    const cardElement =  createCard(data);
+   cardContainer.prepend(cardElement);
+}
+
   function handlePostModalForm(e) {
     e.preventDefault();
-    console.log(modalLinkInput.value);
-    console.log(modalCaptionInput.value);
-     closeModal(postModal);
-}
+    let newItem = {};
+    newItem["name"] = modalCaptionInput.value;
+    newItem["link"] = modalLinkInput.value;
+    renderCard(newItem);
+    postModalForm.reset();
+    closeModal(postModal);
+  }
 
   editCloseButton.addEventListener("click", () => closeModal(editModal));
   postCloseButton.addEventListener("click", () => closeModal(postModal));
@@ -88,7 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
   editModalForm.addEventListener("submit", handleEditModalForm);
   postModalForm.addEventListener("submit", handlePostModalForm);
 
-    initialCards.forEach((item) => {
-      console.log(item.name, item.link);
-     })
+ initialCards.forEach((item) => {
+      renderCard(item);
+    });
+
+
 });
