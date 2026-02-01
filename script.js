@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
     },
   ];
+
   //Profile elements
   const profileSection = document.querySelector(".profile");
   const editButton = profileSection.querySelector(".profile__edit-btn");
@@ -36,8 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //cards grid container
   const cardContainer = document.querySelector(".cards__list");
   //Modal elements
-  const modalOpen = document.querySelector(".modal");
-  // const closeButton = document.querySelector(".modal__close-btn");
+
   const editModal = document.querySelector("#edit-modal");
   const editCloseButton = editModal.querySelector(".modal__close-btn");
   const postModal = document.querySelector("#post-modal");
@@ -48,15 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalDescriptionInput = editModalForm.querySelector("#description");
   const modalLinkInput = postModalForm.querySelector("#image-link");
   const modalCaptionInput = postModalForm.querySelector("#caption");
-  const submitEditButton = editModalForm.querySelector(".modal__submit-btn");
-  const submitPostButton = postModalForm.querySelector(".modal__submit-btn");
-
+  // const submitEditButton = editModalForm.querySelector(".modal__submit-btn");
+  // const submitPostButton = postModalForm.querySelector(".modal__submit-btn");
+  const clearCardsBtn = document.querySelector(".card__clear-btn");
   //Template element
   const cardTemplate = document
-    .querySelector("#card-template")
-    .content.querySelector(".card");
+    .querySelector("#card-template").content;
 
-  //Helper functions
+  let selectedCard;
+//Helper functions
   function closeModal(modal) {
     modal.classList.remove("modal_is-opened");
   }
@@ -79,42 +79,55 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createCard(data) {
-    const cardElement = cardTemplate.cloneNode(true);
+    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const cardImage = cardElement.querySelector(".card__image");
     cardImage.src = data.link;
-    cardElement.alt = data.name;
-    const cardTitle = cardElement.querySelector(".card__title");
-    cardTitle.textContent = data.name;
-    return cardElement;
+    cardImage.alt = `Photo of` + data.name;
+    const cardCaption = cardElement.querySelector(".card__title");
+    cardCaption .textContent = data.name;
+    const cardButtonLike = cardElement.querySelector(".card__like-btn");
+
+    cardButtonLike.addEventListener("click", () => {
+      cardButtonLike.classList.toggle("card__like-btn_liked");
+    });
+
+    const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
+    cardDeleteBtn.addEventListener("click", () => {
+      cardElement.remove();
+      });
+return cardElement;
   }
 
   function renderCard(data) {
-    const cardElement =  createCard(data);
-   cardContainer.prepend(cardElement);
-}
+    const cardElement = createCard(data);
+    cardContainer.prepend(cardElement);
+  }
 
   function handlePostModalForm(e) {
     e.preventDefault();
-    let newItem = {};
-    newItem["name"] = modalCaptionInput.value;
-    newItem["link"] = modalLinkInput.value;
-    renderCard(newItem);
+    const inputValues = {name: modalCaptionInput.value, link: modalLinkInput.value}
+    renderCard(inputValues);
     postModalForm.reset();
     closeModal(postModal);
   }
 
+
+
   editCloseButton.addEventListener("click", () => closeModal(editModal));
   postCloseButton.addEventListener("click", () => closeModal(postModal));
 
+
   editButton.addEventListener("click", handleEditButton);
   postButton.addEventListener("click", () => openModal(postModal));
+  clearCardsBtn.addEventListener("click", () => {
+    cardContainer.innerHTML = "";
+    clearCardsBtn.remove();
+});
 
   editModalForm.addEventListener("submit", handleEditModalForm);
   postModalForm.addEventListener("submit", handlePostModalForm);
 
- initialCards.forEach((item) => {
-      renderCard(item);
-    });
-
-
+  initialCards.forEach((item) => {
+    renderCard(item);
+   });
 });
