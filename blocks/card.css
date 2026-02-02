@@ -50,8 +50,8 @@
   opacity: 1;
 }
 
-.card__like-btn_liked:hover{
- opacity: 0.5;
+.card__like-btn_liked:hover {
+  opacity: 0.5;
 }
 
 .card__delete-btn {
@@ -87,6 +87,7 @@
   font-weight: 500;
   white-space: nowrap;
   color: rgba(252, 245, 229, 1);
+  align-self: center;
 }
 
 .card__clear-btn:hover {
@@ -97,5 +98,10 @@
   .card__image {
     height: 288px;
     width: 100%;
+  }
+
+  .card__clear-btn {
+    max-width: 288px;
+    width: 288px;
   }
 }

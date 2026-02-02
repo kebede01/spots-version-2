@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const initialCards = [
     {
+      name: "Golden gate bridge",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+    },
+    {
       name: "Val Thorens",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
     },
@@ -48,15 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalDescriptionInput = editModalForm.querySelector("#description");
   const modalLinkInput = postModalForm.querySelector("#image-link");
   const modalCaptionInput = postModalForm.querySelector("#caption");
-  // const submitEditButton = editModalForm.querySelector(".modal__submit-btn");
-  // const submitPostButton = postModalForm.querySelector(".modal__submit-btn");
+  const modalPreview = document.querySelector("#modal-preview");
+  const modalPreviewCloseBtn = modalPreview.querySelector(".modal__close-btn");
+  const modalPreviewImage = modalPreview.querySelector(".modal__preview-image");
+  const modalPreviewCaption = modalPreview.querySelector(".modal__title");
   const clearCardsBtn = document.querySelector(".card__clear-btn");
   //Template element
-  const cardTemplate = document
-    .querySelector("#card-template").content;
+  const cardTemplate = document.querySelector("#card-template").content;
 
-  let selectedCard;
-//Helper functions
+  //Helper functions
   function closeModal(modal) {
     modal.classList.remove("modal_is-opened");
   }
@@ -84,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardImage.src = data.link;
     cardImage.alt = `Photo of` + data.name;
     const cardCaption = cardElement.querySelector(".card__title");
-    cardCaption .textContent = data.name;
+    cardCaption.textContent = data.name;
     const cardButtonLike = cardElement.querySelector(".card__like-btn");
 
     cardButtonLike.addEventListener("click", () => {
@@ -94,8 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
     cardDeleteBtn.addEventListener("click", () => {
       cardElement.remove();
-      });
-return cardElement;
+    });
+
+    cardImage.addEventListener("click", () => {
+      modalPreviewImage.src = data.link;
+      modalPreviewImage.alt = `Photo of` + data.name;
+      modalPreviewCaption.textContent = data.name;
+      openModal(modalPreview);
+    });
+    return cardElement;
   }
 
   function renderCard(data) {
@@ -105,29 +116,32 @@ return cardElement;
 
   function handlePostModalForm(e) {
     e.preventDefault();
-    const inputValues = {name: modalCaptionInput.value, link: modalLinkInput.value}
+    const inputValues = {
+      name: modalCaptionInput.value,
+      link: modalLinkInput.value,
+    };
     renderCard(inputValues);
     postModalForm.reset();
     closeModal(postModal);
   }
 
-
-
   editCloseButton.addEventListener("click", () => closeModal(editModal));
   postCloseButton.addEventListener("click", () => closeModal(postModal));
-
+  modalPreviewCloseBtn.addEventListener("click", () =>
+    closeModal(modalPreview),
+  );
 
   editButton.addEventListener("click", handleEditButton);
   postButton.addEventListener("click", () => openModal(postModal));
   clearCardsBtn.addEventListener("click", () => {
     cardContainer.innerHTML = "";
     clearCardsBtn.remove();
-});
+  });
 
   editModalForm.addEventListener("submit", handleEditModalForm);
   postModalForm.addEventListener("submit", handlePostModalForm);
 
   initialCards.forEach((item) => {
     renderCard(item);
-   });
+  });
 });

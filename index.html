@@ -55,7 +55,7 @@
           <ul class="cards__list">
             <template id="card-template">
               <li class="card">
-                <img class="card__image" />
+                <img class="card__image" src="#" />
                 <div class="card__caption">
                   <h2 class="card__title"></h2>
                   <button
@@ -127,6 +127,17 @@
           </label>
           <button class="modal__submit-btn" type="submit">Save</button>
         </form>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-preview">
+      <div class="modal__image-container">
+        <button
+          class="modal__close-btn modal__close-btn_preview"
+          type="button"
+        ></button>
+        <img class="modal__preview-image" src="#" alt="" />
+        <p class="modal__title modal__title_preview"></p>
       </div>
     </div>
     <script src="script.js" defer></script>
