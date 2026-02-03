@@ -85,16 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cardImage.alt = `Photo of` + data.name;
     const cardCaption = cardElement.querySelector(".card__title");
     cardCaption.textContent = data.name;
-    const cardButtonLike = cardElement.querySelector(".card__like-btn");
-
-    cardButtonLike.addEventListener("click", () => {
-      cardButtonLike.classList.toggle("card__like-btn_liked");
-    });
-
-    const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
-    cardDeleteBtn.addEventListener("click", () => {
-      cardElement.remove();
-    });
 
     cardImage.addEventListener("click", () => {
       modalPreviewImage.src = data.link;
@@ -104,7 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return cardElement;
   }
-
+  //event listener on card container instead of on individual card element
+  cardContainer.addEventListener("click", function (evt) {
+    if (evt.target.classList.contains("card__like-btn")) {
+      evt.target.classList.toggle("card__like-btn_liked");
+    }
+    if (evt.target.classList.contains("card__delete-btn")) {
+      evt.target.closest(".card").remove();
+    }
+  });
   function renderCard(data) {
     const cardElement = createCard(data);
     cardContainer.prepend(cardElement);
