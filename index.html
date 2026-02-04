@@ -83,14 +83,18 @@
       <div class="modal__container">
         <h2 class="modal__title">Edit profile</h2>
         <button class="modal__close-btn" type="button"></button>
-        <form class="modal__form">
+        <form class="modal__form" novalidate>
           <label for="name" class="modal__label">
             Name<input
               id="name"
               type="text"
               class="modal__input"
               placeholder="Bessie Coleman"
+              required
+              minlength="2"
+              maxlength="40"
             />
+            <span class="modal__error"></span>
           </label>
           <label for="description" class="modal__label">
             Description<input
@@ -98,9 +102,13 @@
               type="text"
               class="modal__input"
               placeholder="Civil Aviatar"
+              required
+              minlength="2"
+              maxlength="200"
             />
+            <span class="modal__error"></span>
           </label>
-          <button class="modal__submit-btn" type="submit">Save</button>
+          <button class="modal__submit-btn" type="submit" disabled>Save</button>
         </form>
       </div>
     </div>
@@ -108,14 +116,18 @@
       <div class="modal__container">
         <h2 class="modal__title">New post</h2>
         <button class="modal__close-btn" type="button"></button>
-        <form class="modal__form">
+        <form class="modal__form" novalidate>
           <label for="image-link" class="modal__label">
-            Image link<input
+            Image link
+            <input
               id="image-link"
               type="url"
               class="modal__input"
               placeholder="Paste a link to the picture"
+              pattern="^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[^\s]*)?$"
+              required
             />
+            <span class="modal__error"></span>
           </label>
           <label for="caption" class="modal__label">
             Caption<input
@@ -123,7 +135,10 @@
               type="text"
               class="modal__input"
               placeholder="Type your caption"
+              required
+              minlength="2"
             />
+            <span class="modal__error"></span>
           </label>
           <button class="modal__submit-btn" type="submit">Save</button>
         </form>
