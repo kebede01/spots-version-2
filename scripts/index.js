@@ -66,12 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
- 
-
-
-  //Helper functions
-  // To close a pop up modal by pressing Escape key
+// To close a pop up modal by pressing Escape key
   function closeModalByEscKey(evt) {
   if (evt.key === "Escape") {
       const openedModal = document.querySelector(".modal_is-opened");
@@ -80,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+
   function closeModal(modal) {
     modal.classList.remove("modal_is-opened");
   }
@@ -100,13 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openModal(editModal);
   }
 
-  function handleEditModalForm(e) {
-    e.preventDefault();
-    titleElement.textContent = modalNameInput.value;
-    descriptionElement.textContent = modalDescriptionInput.value;
-    disableButton(modalEditSubmitBtn, settings);
-    closeModal(editModal);
-  }
+
 
   function createCard(data) {
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -149,6 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
     disableButton(modalPostSubmitBtn, settings);
     closeModal(postModal);
   }
+
+   function handleEditModalForm(e) {
+    e.preventDefault();
+    titleElement.textContent = modalNameInput.value;
+    descriptionElement.textContent = modalDescriptionInput.value;
+    disableButton(modalEditSubmitBtn, settings);
+    closeModal(editModal);
+   }
 
   editCloseButton.addEventListener("click", () => closeModal(editModal));
   postCloseButton.addEventListener("click", () => closeModal(postModal));

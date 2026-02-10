@@ -33,6 +33,6 @@ trim_trailing_whitespace = false
 # Possible values - true, false
 insert_final_newline = true
 
-# Dot settings
+# Dot config
 project_name = se_project_coffeeshop
 required_files = index.html,styles/style.css
