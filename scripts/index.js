@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //cards grid container
   const cardContainer = document.querySelector(".cards__list");
   //Modal elements
-
+  const modalOverLays = document.querySelectorAll(".modal");
   const editModal = document.querySelector("#edit-modal");
   const editCloseButton = editModal.querySelector(".modal__close-btn");
   const postModal = document.querySelector("#post-modal");
@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const postModalForm = postModal.querySelector(".modal__form");
   const modalNameInput = editModalForm.querySelector("#name");
   const modalDescriptionInput = editModalForm.querySelector("#description");
+  const modalEditSubmitBtn = editModalForm.querySelector(".modal__submit-btn");
   const modalLinkInput = postModalForm.querySelector("#image-link");
   const modalCaptionInput = postModalForm.querySelector("#caption");
+  const modalPostSubmitBtn = postModalForm.querySelector(".modal__submit-btn");
   const modalPreview = document.querySelector("#modal-preview");
   const modalPreviewCloseBtn = modalPreview.querySelector(".modal__close-btn");
   const modalPreviewImage = modalPreview.querySelector(".modal__preview-image");
@@ -55,19 +57,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearCardsBtn = document.querySelector(".card__clear-btn");
   //Template element
   const cardTemplate = document.querySelector("#card-template").content;
+  //
+  //closing a form by clicking in the  modal overlay
+  modalOverLays.forEach((modalOverLay) => {
+    modalOverLay.addEventListener("click", (evt) => {
+      if (evt.target === modalOverLay) {
+        closeModal(modalOverLay);
+      }
+    });
+  });
+
+ 
+
 
   //Helper functions
+  // To close a pop up modal by pressing Escape key
+  function closeModalByEscKey(evt) {
+  if (evt.key === "Escape") {
+      const openedModal = document.querySelector(".modal_is-opened");
+      if (openedModal) {
+        closeModal(openedModal);
+      }
+    }
+  }
   function closeModal(modal) {
     modal.classList.remove("modal_is-opened");
   }
 
   function openModal(modal) {
     modal.classList.add("modal_is-opened");
+    document.addEventListener("keydown", closeModalByEscKey);
   }
 
   function handleEditButton() {
     modalNameInput.value = titleElement.textContent;
     modalDescriptionInput.value = descriptionElement.textContent;
+    resetValidation(
+      editModalForm,
+      [modalNameInput, modalDescriptionInput],
+      settings,
+    );
     openModal(editModal);
   }
 
@@ -75,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     titleElement.textContent = modalNameInput.value;
     descriptionElement.textContent = modalDescriptionInput.value;
+    disableButton(modalEditSubmitBtn, settings);
     closeModal(editModal);
   }
 
@@ -116,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     renderCard(inputValues);
     postModalForm.reset();
+    disableButton(modalPostSubmitBtn, settings);
     closeModal(postModal);
   }
 
@@ -126,7 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   editButton.addEventListener("click", handleEditButton);
-  postButton.addEventListener("click", () => openModal(postModal));
+  postButton.addEventListener("click", () => {
+    openModal(postModal);
+  });
+
   clearCardsBtn.addEventListener("click", () => {
     cardContainer.innerHTML = "";
     clearCardsBtn.remove();
