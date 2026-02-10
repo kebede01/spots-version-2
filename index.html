@@ -94,7 +94,7 @@
               minlength="2"
               maxlength="40"
             />
-            <span class="modal__error"></span>
+            <span class="name-error modal__error"></span>
           </label>
           <label for="description" class="modal__label">
             Description<input
@@ -106,9 +106,9 @@
               minlength="2"
               maxlength="200"
             />
-            <span class="modal__error"></span>
+            <span class="description-error modal__error"></span>
           </label>
-          <button class="modal__submit-btn" type="submit" disabled>Save</button>
+          <button class="modal__submit-btn" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -127,7 +127,7 @@
               pattern="^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/[^\s]*)?$"
               required
             />
-            <span class="modal__error"></span>
+            <span class="image-link-error modal__error"></span>
           </label>
           <label for="caption" class="modal__label">
             Caption<input
@@ -138,7 +138,7 @@
               required
               minlength="2"
             />
-            <span class="modal__error"></span>
+            <span class="caption-error modal__error"></span>
           </label>
           <button class="modal__submit-btn" type="submit">Save</button>
         </form>
