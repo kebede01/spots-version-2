@@ -1,46 +1,52 @@
 .modal {
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  position: fixed;
+  inset: 0; /* shorthand for top/left/right/bottom */
+  background-color: rgba(0, 0, 0, 0.5);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+
+  visibility: hidden;
+  
   opacity: 0;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+
+  padding: 0 10px;
+  box-sizing: border-box;
+
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
 .modal_is-opened {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
 .modal__container {
-  position: relative;
-  padding: 32px 50px;
-  width: 57.3vw;
-  max-width: 730px;
-  border-radius: 8px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  gap: 32px;
-}
+  gap: 24px;
 
-.modal__container {
+  padding: 12px;
+  width: 100%;
+  max-width: 730px;
+
+  border-radius: 8px;
+  box-sizing: border-box;
+
   transform: translateY(-20px);
   transition: transform 0.3s ease;
-  object-fit: cover;
 }
 
-/* when modal opens */
+/* animate container when modal opens */
 .modal_is-opened .modal__container {
   transform: translateY(0);
 }
+
 
 .modal__title {
   padding: 0;
