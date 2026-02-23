@@ -9,7 +9,7 @@
   align-items: center;
 
   visibility: hidden;
-  
+
   opacity: 0;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 
@@ -40,6 +40,7 @@
 
   transform: translateY(-20px);
   transition: transform 0.3s ease;
+  box-shadow: 0px 4px 8px 0px #000000;
 }
 
 /* animate container when modal opens */

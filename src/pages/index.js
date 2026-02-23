@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const initialCards = [
+import "./index.css"
+import { enableValidation, settings } from "../scripts/validation.js";
+const initialCards = [
     {
       name: "Val Thorens",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
@@ -170,4 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initialCards.forEach((item) => {
     renderCard(item);
   });
-});
+
+enableValidation(settings);
+

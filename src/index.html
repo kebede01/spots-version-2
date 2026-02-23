@@ -13,7 +13,7 @@
       content="spots, profile, edit, post, avatar, captions, images, logo"
     />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./pages/index.css" />
+
     <title>Spots</title>
   </head>
   <body>
@@ -21,7 +21,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/header-logo.svg"
+          src="<%=require('./images/header-logo.svg')%>"
           alt="spots logo"
         />
       </header>
@@ -29,7 +29,7 @@
         <section class="profile">
           <img
             class="profile__avatar"
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="avatar image"
           />
           <div class="profile__column">
@@ -38,7 +38,7 @@
             <button class="profile__edit-btn" type="button">
               <img
                 class="profile__pen-icon"
-                src="./images/pen-icon.svg"
+                src="<%=require('./images/pen-icon.svg')%>"
                 alt="pen icon"
               />Edit Profile
             </button>
@@ -46,7 +46,7 @@
           <button class="profile__post-btn" type="button">
             <img
               class="profile__add-icon"
-              src="./images/add-icon.svg"
+              src="<%=require('./images/add-icon.svg')%>"
               alt="add sign icon"
             />New Post
           </button>
@@ -155,7 +155,5 @@
         <p class="modal__title card__title modal__title_preview"></p>
       </div>
     </div>
-    <script src="scripts/validation.js" defer></script>
-    <script src="scripts/index.js" defer></script>
   </body>
 </html>
